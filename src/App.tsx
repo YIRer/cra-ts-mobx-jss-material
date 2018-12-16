@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import { observable } from "mobx";
-import { observer } from "mobx-react"
-import logo from './logo.svg';
-import styles from './styles';
+import { observable, computed } from "mobx";
+import { observer, inject } from "mobx-react";
+import { ITodosStore } from "./stores/todos";
 import './App.css';
 
+interface AppComponentProps{
+  todoStore? :ITodosStore
+}
 @observer
-class App extends Component<{ classes: { [index: string]: string } }> {
+class App extends Component<AppComponentProps,{}> {
   @observable
-  body: string = "Csadsdoolsakdsadjk!"
+  title: string = "TODO-LIST";
+
+  @computed
+  get todos (){
+    const store = this.props.todoStore as ITodosStore;
+    return store.todos;
+  }
+
   render() {
-    const { classes: cls } = this.props;
+    console.log(this.props)
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            {this.body}
-          </p>
-          <Button className={cls.paragraph}>
-            Learn Reactsdksoadjsksakdsajdsad
-          </Button>
+          <h1>{this.title}</h1>
         </header>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default inject('todoStore')(App);
