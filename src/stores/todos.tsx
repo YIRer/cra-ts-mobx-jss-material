@@ -1,13 +1,13 @@
-import { observable } from "mobx";
+import { observable } from 'mobx';
 
 type Itodos = Object[];
 
 export type ITodosStore = {
-  todos:Itodos
-}
+  todos: Itodos;
+};
 export class TodoStore {
   @observable
-  todos:Itodos = [];
+  todos: Itodos = [];
 }
 const todoStore = new TodoStore();
 export default todoStore;
