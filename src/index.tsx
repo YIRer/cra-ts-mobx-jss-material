@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import stores from './stores';
 import './index.css';
 import App from './App';
+import theme from './styles/theme';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider {...stores}>
-    <App />
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
   </Provider>
   , document.getElementById('root'));
 
