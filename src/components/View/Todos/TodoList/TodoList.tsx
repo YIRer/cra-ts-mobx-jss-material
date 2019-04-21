@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class TodoList extends Component {
   render() {
-    return (
-      <div>
-        
-      </div>
-    )
+    return <div>list</div>;
   }
 }
 
-export default TodoList
+export default TodoList;
