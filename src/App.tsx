@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { observable, computed } from "mobx";
-import { observer, inject } from "mobx-react";
-import { ITodosStore } from "./stores/todos";
-import Todos from "./Components/View/Todos";
+import React, { Component } from 'react';
+import { observable, computed } from 'mobx';
+import { observer, inject } from 'mobx-react';
+import { ITodosStore } from './stores/todos';
+import Todos from './Components/View/Todos';
 interface AppComponentProps {
   todoStore?: ITodosStore;
 }
 @observer
 class App extends Component<AppComponentProps, {}> {
   @observable
-  title: string = "TODO-LIST";
+  title: string = 'TODO-LIST';
 
   @computed
   get todos() {
@@ -29,4 +29,4 @@ class App extends Component<AppComponentProps, {}> {
   }
 }
 
-export default inject("todoStore")(App);
+export default inject('todoStore')(App);
